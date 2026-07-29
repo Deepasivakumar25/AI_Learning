@@ -76,21 +76,22 @@ An educational notebook demonstrating how context windows, embeddings, and seman
 - TinyLlama
 
 ---
+🔍 4. Hybrid Search Chatbot
 
-## 🎯 Learning Outcomes
+This project extends the RAG pipeline by combining semantic search and keyword search to improve document retrieval. Semantic search retrieves information based on meaning using Sentence Transformers and FAISS, while keyword search retrieves information based on exact word matches using TF-IDF. The retrieved results are merged and provided as context to Phi-3 Mini, enabling more accurate and reliable answers.
 
-Through these projects, I learned:
 
-- How Large Language Models process text.
-- How to extract text from PDF documents.
-- How Retrieval-Augmented Generation (RAG) improves LLM responses.
-- How to split large documents into meaningful chunks.
-- How sentence embeddings capture semantic meaning.
-- How semantic search retrieves relevant information using FAISS.
-- How context windows affect the amount of information an LLM can process.
-- How to build document-based AI applications using Python.
-
----
+**Concepts Covered**
+Hybrid Search
+Semantic Search
+Keyword Search (TF-IDF)
+Sentence Embeddings
+FAISS Vector Database
+Cosine Similarity
+Document Chunking
+Retrieval-Augmented Generation (RAG)
+Prompt Engineering
+Phi-3 Mini Integration
 
 ## 👩‍💻 Author
 
