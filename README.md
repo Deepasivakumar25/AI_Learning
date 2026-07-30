@@ -93,6 +93,43 @@ Retrieval-Augmented Generation (RAG)
 Prompt Engineering
 Phi-3 Mini Integration
 
+5. Cross-encoding, Re-ranking
+PDF
+ │
+ ▼
+Chunking
+ │
+ ▼
+Embeddings
+ │
+ ▼
+FAISS Semantic Search
+ │
+ ├──────────────┐
+ │              │
+ ▼              ▼
+Top 5        Keyword Search
+Semantic      (TF-IDF)
+Chunks
+ │              │
+ └──────┬───────┘
+        ▼
+ Merge Results
+        ▼
+ Remove Duplicates
+        ▼
+Cross Encoder
+        ▼
+Re-rank Chunks
+        ▼
+Top 3 Chunks
+        ▼
+Phi-3
+        ▼
+Final Answer
+
+I implemented a Hybrid Search RAG pipeline by combining semantic retrieval using FAISS and keyword retrieval using TF-IDF. I merged the retrieved candidates, removed duplicates, and then used a Cross-Encoder (cross-encoder/ms-marco-MiniLM-L-6-v2) to re-rank the candidate chunks before sending the top-ranked context to the LLM
+
 ## 👩‍💻 Author
 
 **Deepa Sivakumar**
