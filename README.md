@@ -4,19 +4,20 @@
 
 Welcome to my AI Learning Repository!
 
-This repository documents my journey of learning Artificial Intelligence through hands-on projects and experiments. Each notebook explores a core concept of Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), semantic search, and document-based question answering.
+This repository documents my journey of learning Artificial Intelligence through hands-on projects and experiments. Each notebook explores fundamental concepts of Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), semantic search, document processing, and AI-powered question answering.
 
-The projects are implemented using Python and Google Colab, helping me gain practical experience with modern AI technologies.
+All projects are implemented using **Python** and **Google Colab**, helping me gain practical experience with modern AI technologies and build a strong foundation in Generative AI.
 
 ---
 
-## 📂 Projects
+# 📂 Projects
 
-### 📄 1. Chat with PDF
+## 📄 1. Chat with PDF
 
-A simple AI application that allows users to ask questions about a PDF document. The notebook extracts text from the uploaded PDF and passes it as context to a Large Language Model (LLM) to generate answers.
+A simple AI application that allows users to ask questions about a PDF document. The notebook extracts text from an uploaded PDF and passes it as context to a Large Language Model (LLM) to generate answers.
 
-**Concepts Covered**
+### Concepts Covered
+
 - PDF text extraction
 - Prompt engineering
 - Context windows
@@ -24,11 +25,12 @@ A simple AI application that allows users to ask questions about a PDF document.
 
 ---
 
-### 🤖 2. Chatbot with Retrieval-Augmented Generation (RAG)
+## 🤖 2. Chatbot with Retrieval-Augmented Generation (RAG)
 
-This project implements a Retrieval-Augmented Generation (RAG) pipeline. Instead of sending the entire document to the language model, it retrieves only the most relevant text using semantic search before generating a response.
+This project implements a Retrieval-Augmented Generation (RAG) pipeline. Instead of sending the entire document to the language model, it retrieves only the most relevant chunks using semantic search before generating a response.
 
-**Concepts Covered**
+### Concepts Covered
+
 - Document chunking
 - Sentence embeddings
 - FAISS vector database
@@ -37,11 +39,12 @@ This project implements a Retrieval-Augmented Generation (RAG) pipeline. Instead
 
 ---
 
-### 🚀 3. Chatbot with RAG (Version 2)
+## 🚀 3. Chatbot with RAG (Version 2)
 
-An enhanced version of the RAG chatbot that experiments with different chunking strategies and lightweight language models to improve retrieval and response generation.
+An enhanced version of the RAG chatbot that experiments with different chunking strategies and lightweight language models to improve retrieval quality and response generation.
 
-**Concepts Covered**
+### Concepts Covered
+
 - Advanced document chunking
 - Embedding generation
 - Semantic similarity search
@@ -50,11 +53,12 @@ An enhanced version of the RAG chatbot that experiments with different chunking 
 
 ---
 
-### 📚 4. Context Window and Semantic Search
+## 📚 4. Context Window and Semantic Search
 
 An educational notebook demonstrating how context windows, embeddings, and semantic search work together to improve document-based question answering.
 
-**Concepts Covered**
+### Concepts Covered
+
 - Context window limitations
 - Document chunking
 - Embeddings
@@ -64,36 +68,36 @@ An educational notebook demonstrating how context windows, embeddings, and seman
 
 ---
 
-## 🛠️ Technologies Used
+## 🔍 5. Hybrid Search Chatbot
 
-- Python
-- Google Colab
-- Hugging Face Transformers
-- Sentence Transformers
-- FAISS
-- PyPDF2
-- Microsoft Phi-3 Mini
-- TinyLlama
+This project extends the RAG pipeline by combining **semantic search** and **keyword search** to improve document retrieval.
+
+Semantic search retrieves information based on meaning using **Sentence Transformers** and **FAISS**, while keyword search retrieves exact word matches using **TF-IDF**. The retrieved results are merged and passed to **Phi-3 Mini** to generate more accurate responses.
+
+### Concepts Covered
+
+- Hybrid Search
+- Semantic Search
+- Keyword Search (TF-IDF)
+- Sentence Embeddings
+- FAISS Vector Database
+- Cosine Similarity
+- Document Chunking
+- Retrieval-Augmented Generation (RAG)
+- Prompt Engineering
+- Phi-3 Mini Integration
 
 ---
-🔍 4. Hybrid Search Chatbot
 
-This project extends the RAG pipeline by combining semantic search and keyword search to improve document retrieval. Semantic search retrieves information based on meaning using Sentence Transformers and FAISS, while keyword search retrieves information based on exact word matches using TF-IDF. The retrieved results are merged and provided as context to Phi-3 Mini, enabling more accurate and reliable answers.
+## 🎯 6. Hybrid Search with Cross-Encoder Re-ranking
 
+This project enhances Hybrid Search by introducing a **Cross-Encoder** as a re-ranking model.
 
-**Concepts Covered**
-Hybrid Search
-Semantic Search
-Keyword Search (TF-IDF)
-Sentence Embeddings
-FAISS Vector Database
-Cosine Similarity
-Document Chunking
-Retrieval-Augmented Generation (RAG)
-Prompt Engineering
-Phi-3 Mini Integration
+After retrieving candidate chunks using semantic search (FAISS) and keyword search (TF-IDF), the results are merged and duplicate chunks are removed. A Cross-Encoder (`cross-encoder/ms-marco-MiniLM-L-6-v2`) then scores each candidate chunk based on the user query. Only the highest-ranked chunks are sent to the Large Language Model, improving retrieval accuracy and answer quality.
 
-5. Cross-encoding, Re-ranking
+### Workflow
+
+```
 PDF
  │
  ▼
@@ -108,9 +112,8 @@ FAISS Semantic Search
  ├──────────────┐
  │              │
  ▼              ▼
-Top 5        Keyword Search
-Semantic      (TF-IDF)
-Chunks
+Top Semantic    Keyword Search
+Chunks          (TF-IDF)
  │              │
  └──────┬───────┘
         ▼
@@ -118,19 +121,66 @@ Chunks
         ▼
  Remove Duplicates
         ▼
-Cross Encoder
+ Cross-Encoder Re-ranking
         ▼
-Re-rank Chunks
+ Top Relevant Chunks
         ▼
-Top 3 Chunks
+ Phi-3 Mini
         ▼
-Phi-3
-        ▼
-Final Answer
+ Final Answer
+```
 
-I implemented a Hybrid Search RAG pipeline by combining semantic retrieval using FAISS and keyword retrieval using TF-IDF. I merged the retrieved candidates, removed duplicates, and then used a Cross-Encoder (cross-encoder/ms-marco-MiniLM-L-6-v2) to re-rank the candidate chunks before sending the top-ranked context to the LLM
+### Concepts Covered
 
-## 👩‍💻 Author
+- Hybrid Search
+- Semantic Search
+- Keyword Search (TF-IDF)
+- Cross-Encoder Re-ranking
+- Sentence Transformers
+- FAISS
+- Cosine Similarity
+- Candidate Retrieval
+- Retrieval-Augmented Generation (RAG)
+- Prompt Engineering
+
+---
+
+## ✂️ 7. Smart Document Chunking using LangChain
+
+This project demonstrates how to split PDF documents into meaningful chunks using LangChain's **RecursiveCharacterTextSplitter**.
+
+Unlike fixed-size chunking, RecursiveCharacterTextSplitter preserves the natural structure of a document by recursively splitting text using paragraphs, new lines, sentences, words, and finally characters when necessary. This produces higher-quality chunks for Retrieval-Augmented Generation (RAG) systems.
+
+### Concepts Covered
+
+- LangChain Text Splitters
+- RecursiveCharacterTextSplitter
+- Smart Document Chunking
+- Chunk Size
+- Chunk Overlap
+- Document Preprocessing
+- PDF Text Extraction
+- Preparing Documents for RAG
+
+---
+
+# 🛠️ Technologies Used
+
+- Python
+- Google Colab
+- Hugging Face Transformers
+- Sentence Transformers
+- LangChain
+- FAISS
+- Scikit-learn (TF-IDF)
+- PyPDF
+- Microsoft Phi-3 Mini
+- TinyLlama
+
+---
+
+# 👩‍💻 Author
 
 **Deepa Sivakumar**
 
+Python Developer | AI Engineer (Learning) | Building hands-on Generative AI projects
